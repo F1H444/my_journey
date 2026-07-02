@@ -1,0 +1,277 @@
+/* ============================================
+   MY JOURNEY — BASE STYLES
+   Reset, Typography, Global Utilities
+   ============================================ */
+
+/* ── Modern Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+h4 { font-size: 1.25rem; }
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: inherit;
+}
+
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Scrollbar Styling ── */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+/* ── Focus Visible ── */
+:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* ── Utility: Screen Reader Only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Utility: Hidden ── */
+.hidden {
+  display: none !important;
+}
+
+/* ── Utility: Flex Helpers ── */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* ── Neo-Brutalism Button Base ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 12px 24px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-base);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  will-change: transform, box-shadow;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: var(--shadow-hover);
+}
+
+.btn:active {
+  transform: translateY(var(--active-push));
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--text-inverse);
+}
+
+.btn-accent {
+  background-color: var(--color-accent-1);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background-color: #FF4757;
+  color: #FFFFFF;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+/* ── Neo-Brutalism Input Base ── */
+.input {
+  width: 100%;
+  padding: 14px 18px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-inset);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  font-size: 1rem;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-base);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  border-radius: var(--border-radius-pill);
+  border: 2px solid var(--border-color);
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+}
+
+/* ── Tooltip ── */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  padding: 6px 12px;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}

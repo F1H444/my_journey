@@ -1,0 +1,247 @@
+/* ============================================
+   MY JOURNEY — ANIMATIONS
+   GPU-Accelerated (transform + opacity only)
+   ============================================ */
+
+/* ── Keyframe: Fade In Up ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Keyframe: Fade In Down ── */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Keyframe: Scale In (Pop) ── */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Keyframe: Pop In (Bouncy) ── */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Keyframe: Slide In Right ── */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Keyframe: Slide In Left ── */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Keyframe: Shake ── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 50%, 90% { transform: translateX(-6px); }
+  30%, 70% { transform: translateX(6px); }
+}
+
+/* ── Keyframe: Pulse ── */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ── Keyframe: Bounce ── */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
+
+/* ── Keyframe: Float ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(2deg); }
+  66% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+/* ── Keyframe: Spin ── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Keyframe: Gradient Shift (login background) ── */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Keyframe: Wiggle ── */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+/* ── Keyframe: Ripple ── */
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ── Keyframe: Glow Pulse (Dark mode) ── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
+}
+
+/* ── Keyframe: Typewriter cursor blink ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── Animation Utility Classes ── */
+.anim-fade-in-up {
+  animation: fadeInUp var(--transition-slow) ease-out both;
+}
+
+.anim-fade-in-down {
+  animation: fadeInDown var(--transition-slow) ease-out both;
+}
+
+.anim-scale-in {
+  animation: scaleIn var(--transition-base) ease-out both;
+}
+
+.anim-pop-in {
+  animation: popIn var(--transition-bounce) both;
+}
+
+.anim-slide-right {
+  animation: slideInRight var(--transition-slow) ease-out both;
+}
+
+.anim-slide-left {
+  animation: slideInLeft var(--transition-slow) ease-out both;
+}
+
+.anim-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.anim-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.anim-bounce {
+  animation: bounce 0.6s ease-out;
+}
+
+.anim-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── Stagger Delays for Grid Items ── */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.30s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.40s; }
+.stagger-9 { animation-delay: 0.45s; }
+.stagger-10 { animation-delay: 0.50s; }
+.stagger-11 { animation-delay: 0.55s; }
+.stagger-12 { animation-delay: 0.60s; }
+
+/* ── Button Ripple Effect ── */
+.btn .ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+/* ── Page Transition ── */
+.page-enter {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.page-exit {
+  animation: fadeInUp 0.3s ease-in reverse both;
+}
+
+/* ── Card Hover: Lift + Shadow Expand ── */
+.card-hover {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  will-change: transform, box-shadow;
+}
+
+.card-hover:hover {
+  transform: translateY(var(--hover-lift)) rotate(-0.5deg);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-hover:active {
+  transform: translateY(var(--active-push));
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

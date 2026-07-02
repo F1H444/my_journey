@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My Journey — Aplikasi jurnal pribadi untuk mencatat perjalanan hidupmu setiap hari. Tulis, refleksi, dan kenang momen indahmu.">
+  <meta name="theme-color" content="#FFE66D">
+  <meta name="author" content="My Journey App">
+  
+  <title>My Journey — Jurnal Pribadi</title>
+
+  <!-- Fonts: Space Grotesk (Headings) + Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Modules -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/form.css">
+
+  <!-- Favicon (emoji-based inline SVG) -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       LOGIN / REGISTER PAGE
+       ═══════════════════════════════════════════ -->
+  <section id="login-page" class="login-page hidden">
+    <!-- Floating decorative shapes -->
+    <div class="login-decor login-decor-1"></div>
+    <div class="login-decor login-decor-2"></div>
+    <div class="login-decor login-decor-3"></div>
+
+    <!-- Theme toggle on login page -->
+    <div class="login-theme-toggle">
+      <button id="login-theme-toggle" class="theme-toggle btn-icon" type="button" aria-label="Toggle theme">
+        Theme
+      </button>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card">
+      <div class="login-header">
+        
+        <h1 class="login-title" id="login-title">Selamat Datang</h1>
+        <p class="login-subtitle" id="login-subtitle">Masukkan password untuk membuka jurnalmu</p>
+      </div>
+
+      <form id="login-form" class="login-form" autocomplete="off">
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input 
+            type="password" 
+            id="login-password" 
+            class="input" 
+            placeholder="Masukkan password..." 
+            required 
+            minlength="4"
+            autocomplete="current-password"
+          >
+        </div>
+
+        <!-- Password Strength (only on register) -->
+        <div id="password-strength" class="password-strength hidden">
+          <div id="password-strength-bar" class="password-strength-bar"></div>
+        </div>
+
+        <!-- Confirm Password (only on register) -->
+        <div class="form-group hidden" id="login-confirm-group">
+          <label for="login-confirm-password">Konfirmasi Password</label>
+          <input 
+            type="password" 
+            id="login-confirm-password" 
+            class="input" 
+            placeholder="Ulangi password..." 
+            minlength="4"
+            autocomplete="new-password"
+          >
+        </div>
+
+        <!-- Error Message -->
+        <div id="login-error" class="login-error hidden"></div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="login-submit-btn" class="btn btn-primary">
+          <span id="login-submit-text">Masuk</span>
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <p>Data tersimpan aman di <span>perangkatmu</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DASHBOARD PAGE
+       ═══════════════════════════════════════════ -->
+  <section id="dashboard-page" class="dashboard-page hidden">
+
+    <!-- ── Header ── -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-brand">
+          
+          <div>
+            <h1 class="header-title">My Journey</h1>
+            <p class="header-greeting" id="header-greeting">Selamat Datang</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <!-- Export -->
+          <button id="export-btn" class="btn btn-ghost btn-sm tooltip" data-tooltip="Export Data" aria-label="Export data">
+            <span class="btn-text-desktop">Export</span>
+          </button>
+
+          <!-- Import -->
+          <button id="import-btn" class="btn btn-ghost btn-sm tooltip" data-tooltip="Import Data" aria-label="Import data">
+            <span class="btn-text-desktop">Import</span>
+          </button>
+          <input type="file" id="import-file-input" accept=".json" class="hidden" aria-hidden="true">
+
+          <!-- Theme Toggle -->
+          <button id="header-theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            Theme
+          </button>
+
+          <!-- Logout -->
+          <button id="logout-btn" class="btn btn-danger btn-sm" aria-label="Logout">
+            <span class="btn-text-desktop">Logout</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Main Content ── -->
+    <main class="main-content">
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          
+          <div class="stat-info">
+            <span class="stat-value" id="stat-total-entries">0</span>
+            <span class="stat-label">Total Jurnal</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          
+          <div class="stat-info">
+            <span class="stat-value" id="stat-top-mood">—</span>
+            <span class="stat-label">Mood Terbanyak</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          
+          <div class="stat-info">
+            <span class="stat-value" id="stat-streak">0 hari</span>
+            <span class="stat-label">Writing Streak</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Write New Entry Section ── -->
+      <section class="journal-form-section">
+        <button id="form-toggle-btn" class="form-toggle-btn" type="button">
+          
+          <span>Tulis Jurnal Baru</span>
+        </button>
+
+        <div id="form-collapse" class="form-collapse">
+          <div class="journal-form-card">
+            <form id="journal-form" class="journal-form" autocomplete="off">
+              <!-- Date + Title Row -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="form-date">
+                    Tanggal
+                  </label>
+                  <input type="date" id="form-date" class="input" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="form-title">
+                    Judul
+                  </label>
+                  <input 
+                    type="text" 
+                    id="form-title" 
+                    class="input" 
+                    placeholder="Hari ini aku merasa..." 
+                    required
+                    maxlength="100"
+                  >
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="form-group">
+                <label class="form-label" for="form-content">
+                  Isi Jurnal
+                </label>
+                <textarea 
+                  id="form-content" 
+                  class="input journal-textarea" 
+                  placeholder="Tulis cerita, refleksi, atau apapun yang ada di pikiranmu hari ini..." 
+                  required
+                ></textarea>
+                <span id="char-counter" class="char-counter">0 karakter</span>
+              </div>
+
+              <!-- Mood Picker -->
+              <div class="mood-picker-wrapper">
+                <label class="form-label">
+                  Bagaimana Mood-mu?
+                </label>
+                <div id="mood-picker" class="mood-picker">
+                  <div class="mood-option" data-mood="happy" tabindex="0" role="radio" aria-label="Happy">
+                    
+                    <span class="mood-label">Happy</span>
+                  </div>
+                  <div class="mood-option" data-mood="sad" tabindex="0" role="radio" aria-label="Sad">
+                    
+                    <span class="mood-label">Sad</span>
+                  </div>
+                  <div class="mood-option" data-mood="angry" tabindex="0" role="radio" aria-label="Angry">
+                    
+                    <span class="mood-label">Angry</span>
+                  </div>
+                  <div class="mood-option" data-mood="tired" tabindex="0" role="radio" aria-label="Tired">
+                    
+                    <span class="mood-label">Tired</span>
+                  </div>
+                  <div class="mood-option" data-mood="excited" tabindex="0" role="radio" aria-label="Excited">
+                    
+                    <span class="mood-label">Excited</span>
+                  </div>
+                  <div class="mood-option" data-mood="calm" tabindex="0" role="radio" aria-label="Calm">
+                    
+                    <span class="mood-label">Calm</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Actions -->
+              <div class="form-actions">
+                <button type="button" id="form-reset-btn" class="btn btn-ghost">
+                  Reset
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Simpan Jurnal
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Journal Entries Section ── -->
+      <section id="entries-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            
+            Jurnal Kamu
+            <span id="entries-count" class="badge">0</span>
+          </h2>
+        </div>
+
+        <div id="cards-grid" class="cards-grid">
+          <!-- Cards rendered by JS -->
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DELETE CONFIRMATION MODAL
+       ═══════════════════════════════════════════ -->
+  <div id="delete-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Konfirmasi hapus jurnal">
+    <div class="modal">
+      
+      <h3 class="modal-title">Hapus Jurnal?</h3>
+      <p class="modal-text">Jurnal yang dihapus tidak bisa dikembalikan. Apakah kamu yakin?</p>
+      <div class="modal-actions">
+        <button id="delete-cancel-btn" class="btn btn-ghost" type="button">
+          Batal
+        </button>
+        <button id="delete-confirm-btn" class="btn btn-danger" type="button">
+          Ya, Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- ═══════════════════════════════════════════
+       VIEW MODAL
+       ═══════════════════════════════════════════ -->
+  <div id="view-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Lihat jurnal">
+    <div class="modal view-modal-content">
+      <div class="view-modal-header" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+        <h3 class="modal-title" id="view-modal-title" style="margin-bottom: 0;"></h3>
+        <span class="card-mood-label" id="view-modal-mood" style="flex-shrink: 0;"></span>
+      </div>
+      <div class="card-date" style="margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
+        <span id="view-modal-date"></span>
+      </div>
+      <div class="view-modal-body" style="text-align: left; overflow-y: auto; max-height: 50vh; padding-right: 10px;">
+        <p class="modal-text" id="view-modal-content" style="white-space: pre-wrap; word-break: break-word;"></p>
+      </div>
+      <div class="modal-actions" style="margin-top: 25px; justify-content: flex-end;">
+        <button id="view-close-btn" class="btn btn-primary" type="button">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       TOAST CONTAINER
+       ═══════════════════════════════════════════ -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ═══════════════════════════════════════════
+       JavaScript Module
+       ═══════════════════════════════════════════ -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

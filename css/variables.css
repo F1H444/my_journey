@@ -1,0 +1,141 @@
+/* ============================================
+   MY JOURNEY — CSS CUSTOM PROPERTIES
+   Theme: Neo-Brutalism + Cyberpunk Neon
+   ============================================ */
+
+:root {
+  /* ── Typography ── */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* ── Neo-Brutalism Tokens ── */
+  --border-width: 3px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+  --border-radius-pill: 50px;
+  --shadow-offset: 5px;
+  --shadow-offset-hover: 8px;
+
+  /* ── Spacing ── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* ── Transition ── */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Mood Colors (shared across themes) ── */
+  --mood-happy: #FFD93D;
+  --mood-sad: #74B9FF;
+  --mood-angry: #FF6B6B;
+  --mood-tired: #A29BFE;
+  --mood-excited: #FF9FF3;
+  --mood-calm: #55EFC4;
+}
+
+/* ============================================
+   LIGHT MODE (Default) — Vibrant Neo-Brutalism
+   ============================================ */
+[data-theme="light"] {
+  /* ── Core Palette ── */
+  --color-primary: #FF6B6B;
+  --color-primary-hover: #EE5A5A;
+  --color-secondary: #4ECDC4;
+  --color-secondary-hover: #3DBDB4;
+  --color-accent-1: #FFE66D;
+  --color-accent-2: #A8E6CF;
+  --color-accent-3: #DDA0DD;
+  --color-accent-4: #FF8A5C;
+
+  /* ── Backgrounds ── */
+  --bg-primary: #FFF8E7;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-input: #FFFFFF;
+  --bg-modal-overlay: rgba(45, 52, 54, 0.5);
+
+  /* ── Text ── */
+  --text-primary: #2D3436;
+  --text-secondary: #636E72;
+  --text-muted: #B2BEC3;
+  --text-inverse: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+
+  /* ── Borders & Shadows ── */
+  --border-color: #2D3436;
+  --shadow-color: #2D3436;
+  --shadow-base: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+  --shadow-hover: var(--shadow-offset-hover) var(--shadow-offset-hover) 0px var(--shadow-color);
+  --shadow-inset: inset 2px 2px 0px var(--shadow-color);
+
+  /* ── Interactive States ── */
+  --hover-lift: -3px;
+  --active-push: 1px;
+
+  /* ── Specific Components ── */
+  --header-bg: #FFE66D;
+  --header-border: #2D3436;
+
+  --badge-bg: #FF6B6B;
+  --badge-text: #FFFFFF;
+  --scrollbar-track: #F0E6D3;
+  --scrollbar-thumb: #DDA0DD;
+}
+
+/* ============================================
+   DARK MODE — Cyberpunk Neon
+   ============================================ */
+[data-theme="dark"] {
+  /* ── Core Palette ── */
+  --color-primary: #FF2E63;
+  --color-primary-hover: #FF1A53;
+  --color-secondary: #08D9D6;
+  --color-secondary-hover: #06C4C1;
+  --color-accent-1: #FFD93D;
+  --color-accent-2: #00FFA3;
+  --color-accent-3: #C77DFF;
+  --color-accent-4: #FF8A5C;
+
+  /* ── Backgrounds ── */
+  --bg-primary: #0F0E17;
+  --bg-secondary: #1A1A2E;
+  --bg-card: #16213E;
+  --bg-input: #1A1A2E;
+  --bg-modal-overlay: rgba(10, 10, 20, 0.7);
+
+  /* ── Text ── */
+  --text-primary: #FFFFFE;
+  --text-secondary: #A7A9BE;
+  --text-muted: #52536E;
+  --text-inverse: #0F0E17;
+  --text-on-primary: #FFFFFF;
+
+  /* ── Borders & Shadows ── */
+  --border-color: #2E2E4A;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --shadow-base: var(--shadow-offset) var(--shadow-offset) 0px var(--shadow-color);
+  --shadow-hover: var(--shadow-offset-hover) var(--shadow-offset-hover) 0px var(--shadow-color), 0 0 20px rgba(8, 217, 214, 0.15);
+  --shadow-inset: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+
+  /* ── Interactive States ── */
+  --hover-lift: -3px;
+  --active-push: 1px;
+
+  /* ── Specific Components ── */
+  --header-bg: #1A1A2E;
+  --header-border: #2E2E4A;
+
+  --badge-bg: #FF2E63;
+  --badge-text: #FFFFFF;
+  --scrollbar-track: #1A1A2E;
+  --scrollbar-thumb: #C77DFF;
+}
